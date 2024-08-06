@@ -1,0 +1,31 @@
+{
+  "name": "markdown-tool-plus",
+  "version": "1.0.0",
+  "description": "A toolbox for expanding markdown functionality",
+  "main": "index.js",
+  "bin": {
+    "markdown-tool-plus": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cao007/markdown-tool-plus.git"
+  },
+  "keywords": [
+    "markdown",
+    "images",
+    "cleanup",
+    "tools"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cao007/markdown-tool-plus/issues"
+  },
+  "homepage": "https://github.com/Cao007/markdown-tool-plus#readme",
+  "dependencies": {
+    "commander": "^9.5.0"
+  }
+}

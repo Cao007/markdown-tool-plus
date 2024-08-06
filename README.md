@@ -2,12 +2,91 @@
 
 ## 功能
 
-一个拓展markdown功能的工具箱
+`markdown-tool-plus` 是一个功能强大的命令行工具，用于处理和增强 Markdown 文件的操作。它提供以下主要功能：
 
-- 清理assets文件夹中未引用的图片资源
-- 设计用于轻松扩展其他 Markdown 管理功能
+### 1. 清理未引用的图片资源
 
-- ......
+在编写和编辑 Markdown 文件时，往往会引用许多图片资源。这些图片资源有时可能不再被使用，但仍然保留在项目中，占用存储空间。`markdown-tool-plus` 提供了 `images-clear` 功能，可以自动检测并删除未被引用的图片资源。
+
+#### 使用方法--命令行
+
+```sh
+markdown-tool-plus images-clear <folder>
+```
+
+示例：folderA文件夹的目录如下所示，此命令将在folderA/index.assets中删除图片，在index.md文件中未引用的图片
+
+~~~bash
+.
+├── folderA
+│   └── index.md
+|   └── index.assets
+|       └── a.png
+|       └── b.png
+~~~
+
+```sh
+markdown-tool-plus images-clear D:\\Desktop\\folderA
+```
+
+
+
+#### 使用方法--函数
+
+你也可以在 Node.js 脚本中导入 `markdown-tool-plus` 模块，并使用其提供的功能：
+
+```js
+const { processFolder } = require('markdown-tool-plus');
+
+// 指定要处理的md文件所在文件夹的路径
+const folderPath = 'D:\\Desktop\\folderA';
+
+// 调用 processFolder 清理D:\\Desktop\\folderA
+processFolder(folderPath);
+```
+
+
+
+### 2. 翻译 Markdown 文件
+
+`markdown-tool-plus` 提供了翻译功能，可以将指定的 Markdown 文件内容翻译为其他语言。默认目标语言是英文（en），但您可以使用 `--language` 选项指定其他语言。
+
+#### 使用方法
+
+```sh
+markdown-tool-plus translate <file> [--language <language>] [--proxy <proxy>]
+```
+
+示例：
+
+```sh
+markdown-tool-plus translate path/to/file.md --language es
+```
+
+此命令将 `file.md` 翻译为西班牙语（es）。如果在使用 `translate` 命令时遇到网络问题，可以通过 `--proxy` 选项指定代理服务器。例如：
+
+```sh
+markdown-tool-plus translate path/to/file.md --proxy http://your-proxy-server:port
+```
+
+
+
+### 3. 列出当前可用的功能
+
+`markdown-tool-plus` 提供了 `ls` 功能，列出所有当前可用的命令和功能说明。
+
+#### 使用方法
+
+```sh
+markdown-tool-plus ls
+```
+
+输出示例：
+
+```sh
+images-clear ------ 清理 assets 文件夹中未引用的图片资源
+translate --------- 翻译指定的 Markdown 文件
+```
 
 
 
@@ -18,62 +97,6 @@
 ```sh
 npm install -g markdown-tool-plus
 ```
-
-
-
-## 使用方法
-
-### 命令行方式
-
-安装后，你可以在命令行中使用 `markdown-tool-plus`。以下是如何使用 `images-clear` 命令的示例：
-
-```sh
-markdown-tool-plus images-clear <folder>
-```
-
-例如：
-
-```sh
-markdown-tool-plus images-clear D:\\Desktop\\markdownDir
-```
-
-此命令将清理指定文件夹markdownDir中未使用的图片。
-
-
-
-### 导入模块方式
-
-你也可以在 Node.js 脚本中导入 `markdown-tool-plus` 模块，并使用其提供的功能：
-
-```js
-const { processFolder } = require('markdown-tool-plus');
-
-// 指定要处理的markdown文件夹路径
-const folderPath = 'D:\\Desktop\\markdownDir';
-
-// 调用 processFolder 函数清理未使用的图片
-processFolder(folderPath);
-```
-
-
-
-## 命令说明
-
-### ls
-
-功能：列出当前所有的功能指令列表。
-
-参数：无
-
-
-
-### images-clear
-
-功能：清理指定 Markdown 文件夹中assets文件夹中未使用的图片。
-
-参数：
-
-- `folder`：包含 `.md` 文件及`.assets`文件夹的路径
 
 
 

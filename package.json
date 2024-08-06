@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/Cao007/markdown-tool-plus#readme",
   "dependencies": {
-    "commander": "^9.5.0"
+    "@vitalets/google-translate-api": "^9.2.0",
+    "commander": "^9.5.0",
+    "global-agent": "^3.0.0"
   }
 }
